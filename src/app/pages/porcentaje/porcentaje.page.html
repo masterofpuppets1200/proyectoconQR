@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary"> 
+    <ion-button color="tertiary" slot="end" [routerLink]="['/listado-alumno']">
+      <ion-icon name="log-in-sharp" size="large"></ion-icon>
+    </ion-button>
+    <ion-title class="titulo">Asistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Porcentaje de Asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="asistencia-container">
+        <div class="clase" *ngFor="let asignatura of asignaturas; let i = index">
+          <h5>{{ asignatura.nombre }}</h5>
+          <ion-progress-bar [value]="asignatura.porcentaje" color="primary"></ion-progress-bar>
+          <span>{{ (asignatura.porcentaje * 100) | number:'1.0-0'}}%</span>
+          <ion-button (click)="aumentarPorcentaje(i, 'asignaturas')" color="secondary">Aumentar Asistencia</ion-button>
+        </div>
+        
+        <div class="clase" *ngFor="let asignatura of asignaturasAdicionales; let i = index">
+          <h5>{{ asignatura.nombre }}</h5>
+          <ion-progress-bar [value]="asignatura.porcentaje" color="primary"></ion-progress-bar>
+          <span>{{ (asignatura.porcentaje * 100) | number:'1.0-0'}}%</span>
+          <ion-button (click)="aumentarPorcentaje(i, 'asignaturasAdicionales')" color="secondary">Aumentar Asistencia</ion-button>
+        </div>
+      </div>
+      <ion-list>
+        <ion-item *ngFor="let asignatura of asignaturas; let i = index">
+          <ion-label>
+            {{ asignatura.nombre }}: {{ asignatura.porcentaje | number:'1.0-0' }}%
+          </ion-label>
+          <ion-button (click)="disminuirPorcentaje(i, 'asignaturas')">Disminuir Porcentaje</ion-button>
+        </ion-item>
+      </ion-list>
+      
+      <ion-list>
+        <ion-item *ngFor="let asignaturaAdicional of asignaturasAdicionales; let i = index">
+          <ion-label>
+            {{ asignaturaAdicional.nombre }}: {{ asignaturaAdicional.porcentaje | number:'1.0-0' }}%
+          </ion-label>
+          <ion-button (click)="disminuirPorcentaje(i, 'asignaturasAdicionales')">Disminuir Porcentaje</ion-button>
+        </ion-item>
+      </ion-list>
+      
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+
+

@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header style="text-align: center;">
+      <ion-card-title><strong>Cambiar Contraseña</strong></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked" style="padding: 5px;"><strong>Usuario</strong></ion-label>
+          <ion-input
+            [(ngModel)]="nombreUsuario"
+            style="color: rgb(255, 255, 255);"
+            placeholder="Ingresa tu usuario"
+            type="text"
+            class="input-field"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked" style="padding: 5px;"><strong>Nueva Contraseña</strong></ion-label>
+          <ion-input
+            [(ngModel)]="nuevaContrasena"
+            style="color: rgb(255, 255, 255);"
+            placeholder="Ingresa nueva contraseña"
+            type="password"
+            class="input-field"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button
+          expand="block"
+          color="primary"
+          (click)="validarInputs()"> <!-- Llama a validarInputs() -->
+          Actualizar Contraseña
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          color="secondary"
+          routerLink="/login"
+        >
+          Volver al Login
+        </ion-button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
